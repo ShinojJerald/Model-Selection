@@ -56,7 +56,7 @@ Accuracy
 # install.packages('caret')
 library(caret)
 folds = createFolds(training_set$Survived, k = 10)
-#idhula dependent variable enna nu mention pannudhom, adhukka peravu ethana folds irrukanum nu poduthom as k=10
+#Mentioning k = 10 as we are doing 10 folds in this dataset
 cv = lapply(folds, function(x) {
   training_fold = training_set[-x, ]
   test_fold = training_set[x, ]
@@ -64,7 +64,6 @@ cv = lapply(folds, function(x) {
                    data = training_fold,
                    type = 'C-classification',
                    kernel = 'radial')
-  #(folds, function(x) fold la pannudha each element um x la cherum
   y_pred = predict(classifier, newdata = test_fold[-5])
   cm = table(test_fold[, 5], y_pred)
   accuracy = (cm[1,1] + cm[2,2]) / (cm[1,1] + cm[2,2] + cm[1,2] + cm[2,1])
@@ -75,10 +74,10 @@ accuracy
 #Accuracy for K-fold cross validation = 81 %
 
 # Applying Grid Search to find the best parameters
+#Here we are choosing kernel svm model.
 # install.packages('caret')
 library(caret)
 classifier = train(form = Survived ~ ., data = training_set, method = 'svmRadial')
-#caret nu bookmark la irrukudhu adhula enna parameter venumo adha eduthu inga method la podanum inga kernel svm model ah select pannudhom
 classifier
 classifier$bestTune
 
@@ -108,11 +107,7 @@ test_set = subset(stats, split == FALSE)
 # install.packages('xgboost')
 library(xgboost)
 classifier = xgboost(data = as.matrix(training_set[-5]), label = training_set$Survived, nrounds = 10)
-#n rounds=10, number of iterations. Idhu chinna dataset so 10 iterations, aana valiya dataset ku number of yethi vidu
-#Inga rmse(root mean square error) kammiya varanum around 20 to 30%. Illaina iteration ah increase pannu.
-#XGBoost panni mudichu endha model la idha use panna thonudho adhula pannalaam
-#Inga k fold validation use pannudhom. K fold la kernel svm use panni irundhom adha XGBoost vachu replace pannuvom
-
+#n rounds=10, number of iterations. 
 # Applying k-Fold Cross Validation
 # install.packages('caret')
 library(caret)
