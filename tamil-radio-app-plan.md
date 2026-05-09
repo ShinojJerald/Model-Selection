@@ -4,8 +4,6 @@
 
 The working app name is **TuneKadal**. A premium sample home page design concept has been added in [`tunekadal-homepage-design.md`](tunekadal-homepage-design.md), with a runnable static prototype at [`prototypes/tunekadal-home.html`](prototypes/tunekadal-home.html). The concept uses a Netflix-style content hierarchy, cinematic dark theme, global Tamil country cards, curated rails, and a persistent mini-player while avoiding copyrighted station logos or unlicensed artist photos.
 
----
-
 ## 1. Product Vision
 
 Build a premium Tamil-first audio app where users can listen to live South Indian/Tamil FM radio stations from around the world. The main focus is live FM and internet radio, with artist-themed radio streams, decade-based stations, devotional streams, instrumental streams, and curated Tamil audio categories as supporting discovery experiences.
